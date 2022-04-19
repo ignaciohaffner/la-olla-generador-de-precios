@@ -1,0 +1,60 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.nav {
+  padding-top: 0.3rem;
+  position: fixed;
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  margin: auto;
+  padding-left: 0;
+}
+
+.nav ul li a {
+  text-decoration: none;
+  color: black;
+  padding: 1.7rem 1.5rem 1.5rem 1.5rem;
+  font-size: 0.9rem;
+  margin-top: 2%;
+}
+
+.header {
+  overflow: hidden;
+}
+
+.nav {
+  display: grid;
+  grid-template-columns: 6fr 4.5fr;
+  align-items: center;
+  margin: auto;
+}
+
+.nav img {
+  height: 50px;
+  margin-top: 1.5%;
+  margin-left: 2%;
+}
+
+.nav ul li a:hover {
+  color: #000;
+  background-color: white;
+}
+
+@media (max-width: 768px) {
+  .nav ul li a {
+    font-size: 0.9rem;
+    padding: 1rem;
+  }
+
+  .nav {
+    display: grid;
+    grid-template-columns: 4fr 4fr;
+    align-items: center;
+    margin: auto;
+  }
+}

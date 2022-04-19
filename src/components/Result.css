@@ -1,0 +1,43 @@
+html {
+  margin: 0;
+  padding: 0;
+}
+
+.imprimir {
+  width: 800px;
+  height: 800px;
+  background-color: #1b1e23;
+  margin: auto;
+}
+
+.col-sm {
+  margin-left: 7%;
+}
+
+.imprimir img {
+  margin: 50px 275px 0;
+}
+
+.imprimir h2,
+p,
+h3 {
+  color: white;
+}
+
+.imprimir p {
+  margin: 0;
+}
+.imprimir h3 {
+  margin-top: 3%;
+  font-size: 1.5rem;
+}
+
+.pizzas p {
+  white-space: nowrap;
+}
+
+.imagen {
+  width: 100px;
+  height: 100px;
+  background-image: url("https://i.imgur.com/IxHKMaO.png");
+}
