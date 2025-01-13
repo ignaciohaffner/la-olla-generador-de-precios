@@ -5,8 +5,6 @@ import "./Result.css";
 import descargar from "../utils/descargar";
 
 const Modificar = () => {
-  const a = "a";
-
   const [precio, setPrecio] = useState({
     precio1: 0,
     precio2: 0,
