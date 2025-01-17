@@ -878,7 +878,6 @@ const Modificar = () => {
                   </div>
                   <div className="caja">
                     <h4>Rotiseria "La Olla</h4>
-                    <h4>431257</h4>
                     <h4>3446-410459</h4>
                     <h4>Maipu y Doello Jurado</h4>
                   </div>
