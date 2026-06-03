@@ -32,9 +32,10 @@
 
 .nav img {
   height: 44px;
-  width: auto;
+  width: 44px;
   display: block;
-  object-fit: contain;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .nav ul {
@@ -70,5 +71,6 @@
 
   .nav img {
     height: 48px;
+    width: 48px;
   }
 }
