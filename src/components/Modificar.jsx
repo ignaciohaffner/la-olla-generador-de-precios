@@ -3,6 +3,7 @@ import React from "react";
 import { useRef, useState } from "react";
 import "./Result.css";
 import descargar from "../utils/descargar";
+import { categorias } from "../data/productos";
 
 const Modificar = () => {
   const [precio, setPrecio] = useState({
@@ -99,639 +100,99 @@ const Modificar = () => {
   const exportRef2 = useRef();
 
   function handleInputChange(e) {
-    setPrecio({
-      ...precio,
-      [e.target.name]: e.target.value,
-    });
+    setPrecio((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
+
+  const [abierto, setAbierto] = useState(null);
+
+  const contarConPrecio = (productos) =>
+    productos.filter((p) => Number(precio[p.stateKey]) > 0).length;
 
   return (
     <>
-      <div className="formularios">
-        <h2>Modificar lista de precios.</h2>
-        <h5>Pizzas</h5>
+      <div className="form-wrapper">
+        <header className="form-header">
+          <h1 className="form-titulo">Lista de Precios</h1>
+        </header>
 
-        <div className="input-group">
-          <span className="input-group-text" id="input-group-left-example">
-            Muzzarella
-          </span>
-          <input
-            type="number"
-            className="form-control"
-            name="precio1"
-            onChange={handleInputChange}
-            placeholder="Precio"
-            aria-label="Username"
-            aria-describedby="input-group-left"
-          />
-        </div>
-        <div className="input-group">
-          <span className="input-group-text" id="input-group-left-example">
-            Muzza con jamon
-          </span>
-          <input
-            type="number"
-            className="form-control"
-            name="precio2"
-            onChange={handleInputChange}
-            placeholder="Precio"
-            aria-label="Username"
-            aria-describedby="input-group-left"
-          />
-        </div>
-        <div className="input-group">
-          <span className="input-group-text" id="input-group-left-example">
-            Muzza jamon y morron
-          </span>
-          <input
-            type="number"
-            className="form-control"
-            name="precio3"
-            onChange={handleInputChange}
-            placeholder="Precio"
-            aria-label="Username"
-            aria-describedby="input-group-left"
-          />
-        </div>
-        <div className="input-group">
-          <span className="input-group-text" id="input-group-left-example">
-            Napolitana
-          </span>
-          <input
-            type="number"
-            className="form-control"
-            name="precio4"
-            onChange={handleInputChange}
-            placeholder="Precio"
-            aria-label="Username"
-            aria-describedby="input-group-left"
-          />
-        </div>
-        <div className="input-group">
-          <span className="input-group-text" id="input-group-left-example">
-            Napolitana con jamon
-          </span>
-          <input
-            type="number"
-            className="form-control"
-            name="precio5"
-            onChange={handleInputChange}
-            placeholder="Precio"
-            aria-label="Username"
-            aria-describedby="input-group-left"
-          />
-        </div>
-        <div className="input-group">
-          <span className="input-group-text" id="input-group-left-example">
-            Muzza con huevo
-          </span>
-          <input
-            type="number"
-            className="form-control"
-            name="precio6"
-            onChange={handleInputChange}
-            placeholder="Precio"
-            aria-label="Username"
-            aria-describedby="input-group-left"
-          />
-        </div>
-        <div className="input-group">
-          <span className="input-group-text" id="input-group-left-example">
-            Muzza con roquefort
-          </span>
-          <input
-            type="number"
-            className="form-control"
-            name="precio7"
-            onChange={handleInputChange}
-            placeholder="Precio"
-            aria-label="Username"
-            aria-describedby="input-group-left"
-          />
-        </div>
-        <div className="input-group">
-          <span className="input-group-text" id="input-group-left-example">
-            Muzza con anchoas
-          </span>
-          <input
-            type="number"
-            className="form-control"
-            name="precio8"
-            onChange={handleInputChange}
-            placeholder="Precio"
-            aria-label="Username"
-            aria-describedby="input-group-left"
-          />
-        </div>
-        <div className="input-group">
-          <span className="input-group-text" id="input-group-left-example">
-            Muzza con jamon y anana
-          </span>
-          <input
-            type="number"
-            className="form-control"
-            name="precio9"
-            onChange={handleInputChange}
-            placeholder="Precio"
-            aria-label="Username"
-            aria-describedby="input-group-left"
-          />
-        </div>
-        <div className="input-group">
-          <span className="input-group-text" id="input-group-left-example">
-            Muzza con panceta
-          </span>
-          <input
-            type="number"
-            className="form-control"
-            name="precio10"
-            onChange={handleInputChange}
-            placeholder="Precio"
-            aria-label="Username"
-            aria-describedby="input-group-left"
-          />
-        </div>
-        <div className="input-group">
-          <span className="input-group-text" id="input-group-left-example">
-            Muzza palmito
-          </span>
-          <input
-            type="number"
-            className="form-control"
-            name="precio11"
-            onChange={handleInputChange}
-            placeholder="Precio"
-            aria-label="Username"
-            aria-describedby="input-group-left"
-          />
-        </div>
-        <div className="input-group">
-          <span className="input-group-text" id="input-group-left-example">
-            Calabresa
-          </span>
-          <input
-            type="number"
-            className="form-control"
-            name="precio12"
-            onChange={handleInputChange}
-            placeholder="Precio"
-            aria-label="Username"
-            aria-describedby="input-group-left"
-          />
-        </div>
-        <div className="input-group">
-          <span className="input-group-text" id="input-group-left-example">
-            Fugazzeta
-          </span>
-          <input
-            type="number"
-            className="form-control"
-            name="precio13"
-            onChange={handleInputChange}
-            placeholder="Precio"
-            aria-label="Username"
-            aria-describedby="input-group-left"
-          />
-        </div>
+        <main className="form-main">
+          {categorias.map((cat) => {
+            const estaAbierto = abierto === cat.id;
+            const conPrecio = contarConPrecio(cat.productos);
+            return (
+              <section
+                key={cat.id}
+                className={`accordion-seccion${estaAbierto ? " is-open" : ""}`}
+              >
+                <button
+                  className="accordion-header"
+                  onClick={() => setAbierto(estaAbierto ? null : cat.id)}
+                  aria-expanded={estaAbierto}
+                  aria-controls={`panel-${cat.id}`}
+                >
+                  <span className="accordion-titulo">{cat.label}</span>
+                  <span className="accordion-resumen">
+                    {conPrecio > 0
+                      ? `${conPrecio} de ${cat.productos.length} con precio`
+                      : `${cat.productos.length} items`}
+                  </span>
+                  <span className="accordion-chevron" aria-hidden="true" />
+                </button>
+                <div className="accordion-cuerpo" id={`panel-${cat.id}`} aria-hidden={!estaAbierto}>
+                  <ul className="producto-lista">
+                    {cat.productos.map((p) => (
+                      <li
+                        key={p.stateKey}
+                        className="producto-fila"
+                        onClick={() =>
+                          document.getElementById(p.stateKey)?.focus()
+                        }
+                      >
+                        <label
+                          htmlFor={p.stateKey}
+                          className="producto-nombre"
+                        >
+                          {p.nombre}
+                        </label>
+                        <div className="precio-wrapper">
+                          <span className="precio-prefijo">$</span>
+                          <input
+                            id={p.stateKey}
+                            type="number"
+                            inputMode="decimal"
+                            className="precio-input"
+                            name={p.stateKey}
+                            onChange={handleInputChange}
+                            placeholder="0"
+                            tabIndex={estaAbierto ? 0 : -1}
+                          />
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </section>
+            );
+          })}
+        </main>
 
-        <h5>Tartas</h5>
-        <div className="input-group">
-          <span className="input-group-text" id="input-group-left-example">
-            Jamon y queso
-          </span>
-          <input
-            type="number"
-            className="form-control"
-            name="precio14"
-            onChange={handleInputChange}
-            placeholder="Precio"
-            aria-label="Username"
-            aria-describedby="input-group-left"
-          />
-        </div>
-        <div className="input-group">
-          <span className="input-group-text" id="input-group-left-example">
-            Jamon y tomate
-          </span>
-          <input
-            type="number"
-            className="form-control"
-            name="precio15"
-            onChange={handleInputChange}
-            placeholder="Precio"
-            aria-label="Username"
-            aria-describedby="input-group-left"
-          />
-        </div>
-        <div className="input-group">
-          <span className="input-group-text" id="input-group-left-example">
-            Verdura
-          </span>
-          <input
-            type="number"
-            className="form-control"
-            name="precio16"
-            onChange={handleInputChange}
-            placeholder="Precio"
-            aria-label="Username"
-            aria-describedby="input-group-left"
-          />
-        </div>
-        <div className="input-group">
-          <span className="input-group-text" id="input-group-left-example">
-            Choclo
-          </span>
-          <input
-            type="number"
-            className="form-control"
-            name="precio17"
-            onChange={handleInputChange}
-            placeholder="Precio"
-            aria-label="Username"
-            aria-describedby="input-group-left"
-          />
-        </div>
-
-        <h5>Empanadas</h5>
-        <div className="input-group">
-          <span className="input-group-text" id="input-group-left-example">
-            Precio unidad
-          </span>
-          <input
-            type="number"
-            className="form-control"
-            name="precio18"
-            onChange={handleInputChange}
-            placeholder="Precio"
-            aria-label="Username"
-            aria-describedby="input-group-left"
-          />
-        </div>
-        <div className="input-group">
-          <span className="input-group-text" id="input-group-left-example">
-            Docena
-          </span>
-          <input
-            type="number"
-            className="form-control"
-            name="precio19"
-            onChange={handleInputChange}
-            placeholder="Precio"
-            aria-label="Username"
-            aria-describedby="input-group-left"
-          />
-        </div>
-
-        <h5>Comidas</h5>
-
-        <div className="input-group">
-          <span className="input-group-text" id="input-group-left-example">
-            Carne
-          </span>
-          <input
-            type="number"
-            className="form-control"
-            name="precio20"
-            onChange={handleInputChange}
-            placeholder="Precio"
-            aria-label="Username"
-            aria-describedby="input-group-left"
-          />
-        </div>
-        <div className="input-group">
-          <span className="input-group-text" id="input-group-left-example">
-            Pollo
-          </span>
-          <input
-            type="number"
-            className="form-control"
-            name="precio21"
-            onChange={handleInputChange}
-            placeholder="Precio"
-            aria-label="Username"
-            aria-describedby="input-group-left"
-          />
-        </div>
-        <div className="input-group">
-          <span className="input-group-text" id="input-group-left-example">
-            Milanesa carne
-          </span>
-          <input
-            type="number"
-            className="form-control"
-            name="precio22"
-            onChange={handleInputChange}
-            placeholder="Precio"
-            aria-label="Username"
-            aria-describedby="input-group-left"
-          />
-        </div>
-        <div className="input-group">
-          <span className="input-group-text" id="input-group-left-example">
-            Milanesa pollo
-          </span>
-          <input
-            type="number"
-            className="form-control"
-            name="precio23"
-            onChange={handleInputChange}
-            placeholder="Precio"
-            aria-label="Username"
-            aria-describedby="input-group-left"
-          />
-        </div>
-        <div className="input-group">
-          <span className="input-group-text" id="input-group-left-example">
-            Milanesa pescado
-          </span>
-          <input
-            type="number"
-            className="form-control"
-            name="precio24"
-            onChange={handleInputChange}
-            placeholder="Precio"
-            aria-label="Username"
-            aria-describedby="input-group-left"
-          />
-        </div>
-        <div className="input-group">
-          <span className="input-group-text" id="input-group-left-example">
-            Napo carne
-          </span>
-          <input
-            type="number"
-            className="form-control"
-            name="precio25"
-            onChange={handleInputChange}
-            placeholder="Precio"
-            aria-label="Username"
-            aria-describedby="input-group-left"
-          />
-        </div>
-        <div className="input-group">
-          <span className="input-group-text" id="input-group-left-example">
-            Napo pollo
-          </span>
-          <input
-            type="number"
-            className="form-control"
-            name="precio26"
-            onChange={handleInputChange}
-            placeholder="Precio"
-            aria-label="Username"
-            aria-describedby="input-group-left"
-          />
-        </div>
-        <div className="input-group">
-          <span className="input-group-text" id="input-group-left-example">
-            Tortilla de Papa
-          </span>
-          <input
-            type="number"
-            className="form-control"
-            name="precio27"
-            onChange={handleInputChange}
-            placeholder="Precio"
-            aria-label="Username"
-            aria-describedby="input-group-left"
-          />
-        </div>
-        <div className="input-group">
-          <span className="input-group-text" id="input-group-left-example">
-            Tortilla de verdura
-          </span>
-          <input
-            type="number"
-            className="form-control"
-            name="precio28"
-            onChange={handleInputChange}
-            placeholder="Precio"
-            aria-label="Username"
-            aria-describedby="input-group-left"
-          />
-        </div>
-        <div className="input-group">
-          <span className="input-group-text" id="input-group-left-example">
-            Papas fritas{" "}
-          </span>
-          <input
-            type="number"
-            className="form-control"
-            name="precio29"
-            onChange={handleInputChange}
-            placeholder="Precio"
-            aria-label="Username"
-            aria-describedby="input-group-left"
-          />
-        </div>
-        <div className="input-group">
-          <span className="input-group-text" id="input-group-left-example">
-            Papas fritas x2
-          </span>
-          <input
-            type="number"
-            className="form-control"
-            name="precio30"
-            onChange={handleInputChange}
-            placeholder="Precio"
-            aria-label="Username"
-            aria-describedby="input-group-left"
-          />
-        </div>
-        <div className="input-group">
-          <span className="input-group-text" id="input-group-left-example">
-            Papas fritas x3
-          </span>
-          <input
-            type="number"
-            className="form-control"
-            name="precio31"
-            onChange={handleInputChange}
-            placeholder="Precio"
-            aria-label="Username"
-            aria-describedby="input-group-left"
-          />
-        </div>
-        <div className="input-group">
-          <span className="input-group-text" id="input-group-left-example">
-            Pure
-          </span>
-          <input
-            type="number"
-            className="form-control"
-            name="precio32"
-            onChange={handleInputChange}
-            placeholder="Precio"
-            aria-label="Username"
-            aria-describedby="input-group-left"
-          />
-        </div>
-        <div className="input-group">
-          <span className="input-group-text" id="input-group-left-example">
-            Papa al horno
-          </span>
-          <input
-            type="number"
-            className="form-control"
-            name="precio33"
-            onChange={handleInputChange}
-            placeholder="Precio"
-            aria-label="Username"
-            aria-describedby="input-group-left"
-          />
-        </div>
-
-        <div className="input-group">
-          <span className="input-group-text" id="input-group-left-example">
-            Ensalada
-          </span>
-          <input
-            type="number"
-            className="form-control"
-            name="precio34"
-            onChange={handleInputChange}
-            placeholder="Precio"
-            aria-label="Username"
-            aria-describedby="input-group-left"
-          />
-        </div>
-
-        <h5>Pastas</h5>
-        <div className="input-group">
-          <span className="input-group-text" id="input-group-left-example">
-            Ñoquis salsa
-          </span>
-          <input
-            type="number"
-            className="form-control"
-            name="precio35"
-            onChange={handleInputChange}
-            placeholder="Precio"
-            aria-label="Username"
-            aria-describedby="input-group-left"
-          />
-        </div>
-        <div className="input-group">
-          <span className="input-group-text" id="input-group-left-example">
-            Ravioles salsa
-          </span>
-          <input
-            type="number"
-            className="form-control"
-            name="precio36"
-            onChange={handleInputChange}
-            placeholder="Precio"
-            aria-label="Username"
-            aria-describedby="input-group-left"
-          />
-        </div>
-        <div className="input-group">
-          <span className="input-group-text" id="input-group-left-example">
-            Tallarines salsa
-          </span>
-          <input
-            type="number"
-            className="form-control"
-            name="precio37"
-            onChange={handleInputChange}
-            placeholder="Precio"
-            aria-label="Username"
-            aria-describedby="input-group-left"
-          />
-        </div>
-
-        <div className="input-group">
-          <span className="input-group-text" id="input-group-left-example">
-            Sorrentinos salsa
-          </span>
-          <input
-            type="number"
-            className="form-control"
-            name="precio38"
-            onChange={handleInputChange}
-            placeholder="Precio"
-            aria-label="Username"
-            aria-describedby="input-group-left"
-          />
-        </div>
-
-        <div className="input-group">
-          <span className="input-group-text" id="input-group-left-example">
-            Ñoquis bolognesa
-          </span>
-          <input
-            type="number"
-            className="form-control"
-            name="precio39"
-            onChange={handleInputChange}
-            placeholder="Precio"
-            aria-label="Username"
-            aria-describedby="input-group-left"
-          />
-        </div>
-        <div className="input-group">
-          <span className="input-group-text" id="input-group-left-example">
-            Ravioles bolognesa
-          </span>
-          <input
-            type="number"
-            className="form-control"
-            name="precio40"
-            onChange={handleInputChange}
-            placeholder="Precio"
-            aria-label="Username"
-            aria-describedby="input-group-left"
-          />
-        </div>
-        <div className="input-group">
-          <span className="input-group-text" id="input-group-left-example">
-            Tallarines bolognesa
-          </span>
-          <input
-            type="number"
-            className="form-control"
-            name="precio41"
-            onChange={handleInputChange}
-            placeholder="Precio"
-            aria-label="Username"
-            aria-describedby="input-group-left"
-          />
-        </div>
-
-        <div className="input-group">
-          <span className="input-group-text" id="input-group-left-example">
-            Sorrentinos bolognesa
-          </span>
-          <input
-            type="number"
-            className="form-control"
-            name="precio42"
-            onChange={handleInputChange}
-            placeholder="Precio"
-            aria-label="Username"
-            aria-describedby="input-group-left"
-          />
+        <div className="botones-sticky">
+          <button
+            className="btn-descarga"
+            onClick={() => descargar(exportRef.current, "Precios Pizzas")}
+          >
+            Descargar pizzas
+          </button>
+          <button
+            className="btn-descarga"
+            onClick={() => descargar(exportRef2.current, "Precios Comidas")}
+          >
+            Descargar comida
+          </button>
         </div>
       </div>
-      <div>
-        <div className="row botones">
-          <div className="col">
-            <button
-              className="btn btn-primary"
-              onClick={() => descargar(exportRef.current, "Precios Pizzas")}
-            >
-              Descargar pizzas
-            </button>
-          </div>
-          <div className="col">
-            <button
-              className="btn btn-primary"
-              onClick={() => descargar(exportRef2.current, "Precios Comidas")}
-            >
-              Descargar comida
-            </button>
-          </div>
-        </div>
+
+      <div style={{ overflowX: 'hidden' }}>
         <div className="parent">
           <div ref={exportRef}>
             <div id="sacafoto" className="imprimir">
